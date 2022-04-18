@@ -28,6 +28,18 @@ def ej3():
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
     
+    csvfile = open('stock.csv', 'r')
+    stock = list(csv.DictReader(csvfile))
+
+    cantidad_tornillos = 0
+
+    for i in range(len(stock)):        
+        for k, v in stock[i].items():
+            if k == "tornillos":
+                
+                cantidad_tornillos = cantidad_tornillos + int(v)
+
+    print('Suma de Cantidad de Tornillos:',cantidad_tornillos)                      
 
 
 def ej4():
@@ -48,6 +60,23 @@ def ej4():
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
 
+    csvfile = open('propiedades.csv', 'r')
+    propiedades = list(csv.DictReader(csvfile))
+
+    cantidad_2ambientes = 0 
+    cantidad_3ambientes = 0 
+
+    for i in range(len(propiedades)):        
+        for k, v in propiedades[i].items():
+            if k == "ambientes":
+                if v:
+                    if v == '2':
+                        cantidad_2ambientes = cantidad_2ambientes + 1
+                    elif v == '3':
+                        cantidad_3ambientes = cantidad_3ambientes + 1
+
+    print('Cantidad de departamentos de 2 ambientes:',cantidad_2ambientes)
+    print('Cantidad de departamentos de 3 ambientes:',cantidad_3ambientes)
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
